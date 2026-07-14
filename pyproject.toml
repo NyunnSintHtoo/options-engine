@@ -62,7 +62,6 @@ options_engine = "python/src/options_engine"
 
 [tool.pytest.ini_options]
 testpaths = ["python/tests"]
-addopts = "--cov=options_engine --cov-report=html --cov-report=term-missing"
 python_files = "test_*.py"
 python_classes = "Test*"
 python_functions = "test_*"

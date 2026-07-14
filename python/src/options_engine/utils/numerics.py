@@ -79,12 +79,12 @@ def validate_option_inputs(
 
 
 def compute_d1_d2(
-    S: float,
-    K: float,
-    T: float,
-    r: float,
-    vol: float,
-) -> tuple[float, float]:
+    S,
+    K,
+    T,
+    r,
+    vol,
+):
     """
     Compute d1 and d2 for Black-Scholes formula.
 
@@ -102,19 +102,24 @@ def compute_d1_d2(
         (d1, d2) tuple.
     """
     sqrt_T = np.sqrt(T)
-    if sqrt_T == 0:
+    # Handle 0DTE: use np.any() for array-safe check
+    is_zero_dte = sqrt_T == 0
+    if np.any(is_zero_dte):
         # 0DTE: d1 and d2 become infinite if S != K, undefined if S == K
-        # For practical purposes, return large values or handle separately
-        if S == K:
-            return 0.0, 0.0
-        elif S > K:
-            return np.inf, np.inf
-        else:
-            return -np.inf, -np.inf
+        # For vectorized operation, compute normally and replace later
+        vol_sqrt_T = np.where(is_zero_dte, 1.0, vol * sqrt_T)  # Avoid division by zero
+    else:
+        vol_sqrt_T = vol * sqrt_T
 
-    vol_sqrt_T = vol * sqrt_T
     d1 = (np.log(S / K) + (r + 0.5 * vol**2) * T) / vol_sqrt_T
     d2 = d1 - vol_sqrt_T
+
+    # Replace 0DTE values with symbolic representation
+    if np.any(is_zero_dte):
+        # For 0DTE: d1 = +inf if S > K, -inf if S < K, else 0
+        d1 = np.where(is_zero_dte, np.where(S > K, np.inf, np.where(S < K, -np.inf, 0.0)), d1)
+        d2 = np.where(is_zero_dte, np.where(S > K, np.inf, np.where(S < K, -np.inf, 0.0)), d2)
+
     return d1, d2
 
 
