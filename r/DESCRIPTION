@@ -1,0 +1,17 @@
+Package: optionsEngine
+Title: Professional Options Pricing Engine
+Version: 0.1.0
+Authors@R:
+    person("Options Engine", "Contributors", email = "dev@options-engine.dev", role = c("aut", "cre"))
+Description: Reference implementation in R for options pricing validation.
+    Prices European and American options with full Greeks.
+    Cross-validates against Python implementation.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports:
+    data.table,
+    ggplot2
+Suggests:
+    testthat (>= 3.0.0)
