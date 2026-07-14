@@ -28,13 +28,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Stage 2: American Options + Discrete Dividends
-- [ ] Cox-Ross-Rubinstein binomial tree
-- [ ] Discrete dividend handling with ex-date logic
-- [ ] American ≥ European bounds validation
-- [ ] Early-exercise indicator
-- [ ] Trinomial tree (optional)
-- [ ] Tests with known benchmark values
+### Stage 2: American Options + Discrete Dividends ✅ COMPLETE
+- [x] Cox-Ross-Rubinstein binomial tree (recombining, auto-tuned steps)
+- [x] Discrete dividend handling with ex-date logic
+- [x] American ≥ European bounds validation
+- [x] Early-exercise indicator (compare American to European)
+- [x] Greeks via finite differences (delta, gamma, vega, theta, rho)
+- [x] Risk-neutral probability validation (0 < p < 1)
+- [x] Convergence tests: binomial → European as n_steps → ∞
+- [x] Dividend impact tests (timing, magnitude)
+- [x] 19 comprehensive tests, all passing
 
 ### Stage 3: Monte Carlo Engine
 - [ ] Log-normal path generation
