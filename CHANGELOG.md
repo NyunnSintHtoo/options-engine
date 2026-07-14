@@ -39,12 +39,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [x] Dividend impact tests (timing, magnitude)
 - [x] 19 comprehensive tests, all passing
 
-### Stage 3: Monte Carlo Engine
-- [ ] Log-normal path generation
-- [ ] Antithetic variates variance reduction
-- [ ] Control variate pricing
-- [ ] Standard error and confidence intervals
-- [ ] Convergence analysis plots
+### Stage 3: Monte Carlo Engine ✅ COMPLETE
+- [x] Log-normal path generation (vectorized NumPy)
+- [x] Antithetic variates variance reduction (~2x variance reduction)
+- [x] Control variate framework (BSM reference)
+- [x] Standard error and confidence intervals (95% CI)
+- [x] Convergence analysis: SE ~ 1/sqrt(N)
+- [x] Dividend yield support (cost-of-carry)
+- [x] 15 comprehensive tests, all passing
 
 ### Stage 4: Implied-Vol Solver
 - [ ] Newton-Raphson solver with bisection fallback
