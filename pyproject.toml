@@ -7,7 +7,7 @@ name = "options-engine"
 version = "0.1.0"
 description = "Professional options pricing engine for US equity and index options with correctness and numerical stability as first-class concerns."
 readme = "docs/README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
     {name = "Options Engine Contributors", email = "dev@options-engine.dev"},

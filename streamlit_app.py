@@ -5,6 +5,13 @@ Black-Scholes, Monte Carlo, and binomial pricing with full Greeks,
 implied-vol solving, and vectorized chain pricing.
 """
 
+import sys
+from pathlib import Path
+
+# Make the engine importable straight from the repo (no pip install needed,
+# e.g. on Streamlit Community Cloud).
+sys.path.insert(0, str(Path(__file__).resolve().parent / "python" / "src"))
+
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
